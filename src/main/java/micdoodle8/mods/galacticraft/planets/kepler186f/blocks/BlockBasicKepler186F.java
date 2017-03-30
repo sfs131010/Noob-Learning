@@ -159,18 +159,18 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.kepler186BlockIcons = new IIcon[11];
-        this.marsBlockIcons[0] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "cobblestone");
-        this.marsBlockIcons[1] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "decoration_desh");
-        this.marsBlockIcons[2] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "middle");
-        this.marsBlockIcons[3] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "brick");
-        this.marsBlockIcons[4] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "top");
-        this.marsBlockIcons[5] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "copper");
-        this.marsBlockIcons[6] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "desh");
-        this.marsBlockIcons[7] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "tin");
-        this.marsBlockIcons[8] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "bottom");
-        this.marsBlockIcons[9] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "iron");
-        this.marsBlockIcons[10] = par1IconRegister.registerIcon(GalacticraftCore.TEXTURE_PREFIX + "blank");
+        this.kepler186fBlockIcons = new IIcon[11];
+        this.kepler186fBlockIcons[0] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "cobblestone");
+        this.kepler186fBlockIcons[1] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "decoration_desh");
+        this.kepler186fBlockIcons[2] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "middle");
+        this.kepler186fBlockIcons[3] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "brick");
+        this.kepler186fBlockIcons[4] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "top");
+        this.kepler186fBlockIcons[5] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "copper");
+        this.kepler186fBlockIcons[6] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "desh");
+        this.kepler186fBlockIcons[7] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "tin");
+        this.kepler186fBlockIcons[8] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "bottom");
+        this.kepler186fBlockIcons[9] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "iron");
+        this.kepler186fBlockIcons[10] = par1IconRegister.registerIcon(GalacticraftCore.TEXTURE_PREFIX + "blank");
     }*/
 
     @SideOnly(Side.CLIENT)
@@ -203,7 +203,7 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
     {
         if (state.getValue(BASIC_TYPE) == EnumBlockBasic.DUNGEON_SPAWNER)
         {
-            return new TileEntityDungeonSpawnerMars();
+            return new TileEntityDungeonSpawnerKepler186F();
         }
 
         return null;
@@ -234,29 +234,29 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
         switch (meta)
         {
         case 0:
-            return this.marsBlockIcons[5];
+            return this.kepler186fBlockIcons[5];
         case 1:
-            return this.marsBlockIcons[7];
+            return this.kepler186fBlockIcons[7];
         case 2:
-            return this.marsBlockIcons[6];
+            return this.kepler186fBlockIcons[6];
         case 3:
-            return this.marsBlockIcons[9];
+            return this.kepler186fBlockIcons[9];
         case 4:
-            return this.marsBlockIcons[0];
+            return this.kepler186fBlockIcons[0];
         case 5:
-            return this.marsBlockIcons[4];
+            return this.kepler186fBlockIcons[4];
         case 6:
-            return this.marsBlockIcons[2];
+            return this.kepler186fBlockIcons[2];
         case 7:
-            return this.marsBlockIcons[3];
+            return this.kepler186fBlockIcons[3];
         case 8:
-            return this.marsBlockIcons[1];
+            return this.kepler186fBlockIcons[1];
         case 9:
-            return this.marsBlockIcons[8];
+            return this.kepler186fBlockIcons[8];
         case 10:
-            return this.marsBlockIcons[10];
+            return this.kepler186fBlockIcons[10];
         }
-        return this.marsBlockIcons[1];
+        return this.kepler186fBlockIcons[1];
     }*/
 
     @Override
@@ -264,7 +264,7 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
     {
         if (state.getValue(BASIC_TYPE) == EnumBlockBasic.ORE_DESH)
         {
-            return MarsItems.marsItemBasic;
+            return Kepler186FItems.kepler186fItemBasic;
         }
         else if (state.getValue(BASIC_TYPE) == EnumBlockBasic.DUNGEON_SPAWNER)
         {
@@ -278,7 +278,7 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
     public int damageDropped(IBlockState state)
     {
         int meta = state.getBlock().getMetaFromState(state);
-        if (state.getValue(BASIC_TYPE) == EnumBlockBasic.MARS_STONE)
+        if (state.getValue(BASIC_TYPE) == EnumBlockBasic.KEPLER186F_STONE)
         {
             return 4;
         }
@@ -394,7 +394,7 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
         {
             return new ItemStack(Item.getItemFromBlock(this), 1, metadata);
         }
-        if (state.getValue(BASIC_TYPE) == EnumBlockBasic.MARS_STONE)
+        if (state.getValue(BASIC_TYPE) == EnumBlockBasic.KEPLER186F_STONE)
         {
             return new ItemStack(Item.getItemFromBlock(this), 1, metadata);
         }
@@ -411,7 +411,7 @@ public class BlockBasicKepler186F extends Block implements IDetectableResource, 
     {
         if (target != Blocks.stone) return false;
         IBlockState state = world.getBlockState(pos);
-    	return (state.getValue(BASIC_TYPE) == EnumBlockBasic.MIDDLE || state.getValue(BASIC_TYPE) == EnumBlockBasic.MARS_STONE);
+    	return (state.getValue(BASIC_TYPE) == EnumBlockBasic.MIDDLE || state.getValue(BASIC_TYPE) == EnumBlockBasic.KEPLER186F_STONE);
     }
     
     @Override
