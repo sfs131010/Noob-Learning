@@ -1,4 +1,4 @@
-package micdoodle8.mods.galacticraft.planets.mars.blocks;
+package micdoodle8.mods.galacticraft.planets.kepler186f.blocks;
 
 import com.google.common.base.Predicate;
 import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
@@ -9,10 +9,10 @@ import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.blocks.ISortableBlock;
 import micdoodle8.mods.galacticraft.core.util.EnumSortCategoryBlock;
 import micdoodle8.mods.galacticraft.planets.GalacticraftPlanets;
-import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
-import micdoodle8.mods.galacticraft.planets.mars.entities.EntityCreeperBoss;
-import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
-import micdoodle8.mods.galacticraft.planets.mars.tile.TileEntityDungeonSpawnerMars;
+import micdoodle8.mods.galacticraft.planets.kepler186f.Kepler186FModule;
+import micdoodle8.mods.galacticraft.planets.kepler186f.entities.EntityCreeperBoss;
+import micdoodle8.mods.galacticraft.planets.kepler186f.items.Kepler186FItems;
+import micdoodle8.mods.galacticraft.planets.kepler186f.tile.TileEntityDungeonSpawnerKepler186F;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;
@@ -38,22 +38,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-public class BlockBasicMars extends Block implements IDetectableResource, IPlantableBlock, ITileEntityProvider, ITerraformableBlock, ISortableBlock
+public class BlockBasicKepler186F extends Block implements IDetectableResource, IPlantableBlock, ITileEntityProvider, ITerraformableBlock, ISortableBlock
 {
-    public static final PropertyEnum BASIC_TYPE = PropertyEnum.create("basicTypeMars", EnumBlockBasic.class);
+    public static final PropertyEnum BASIC_TYPE = PropertyEnum.create("basicTypekKepler186F", EnumBlockBasic.class);
 
     public enum EnumBlockBasic implements IStringSerializable
     {
-        ORE_COPPER(0, "ore_copper_mars"),
-        ORE_TIN(1, "ore_tin_mars"),
-        ORE_DESH(2, "ore_desh_mars"),
-        ORE_IRON(3, "ore_iron_mars"),
+        ORE_COPPER(0, "ore_copper_kepler186f"),
+        ORE_TIN(1, "ore_tin_kepler186f"),
+        ORE_DESH(2, "ore_desh_kepler186f"),
+        ORE_IRON(3, "ore_iron_kepler186f"),
         COBBLESTONE(4, "cobblestone"),
-        SURFACE(5, "mars_surface"),
-        MIDDLE(6, "mars_middle"),
+        SURFACE(5, "kepler186f_surface"),
+        MIDDLE(6, "kepler186f_middle"),
         DUNGEON_BRICK(7, "dungeon_brick"),
         DESH_BLOCK(8, "desh_block"),
-        MARS_STONE(9, "mars_stone"),
+        KEPLER186F_STONE(9, "kepler186f_stone"),
         DUNGEON_SPAWNER(10, "dungeon_spawner");
 
         private final int meta;
@@ -83,16 +83,16 @@ public class BlockBasicMars extends Block implements IDetectableResource, IPlant
     }
 
 //    @SideOnly(Side.CLIENT)
-//    private IIcon[] marsBlockIcons;
+//    private IIcon[] kepler186fBlockIcons;
 
     //Metadata values:
     //0 copper ore, 1 tin ore, 2 desh ore, 3 iron ore
     //4 cobblestone, 5 top (surface rock), 6 middle, 7 dungeon brick
     //8 desh decoration block
-    //9 Mars stone
+    //9 Kepler186F stone
     //10 dungeon spawner (invisible)
 
-    public BlockBasicMars(String assetName)
+    public BlockBasicKepler186F(String assetName)
     {
         super(Material.rock);
         this.setUnlocalizedName(assetName);
@@ -159,17 +159,17 @@ public class BlockBasicMars extends Block implements IDetectableResource, IPlant
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.marsBlockIcons = new IIcon[11];
-        this.marsBlockIcons[0] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "cobblestone");
-        this.marsBlockIcons[1] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "decoration_desh");
-        this.marsBlockIcons[2] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "middle");
-        this.marsBlockIcons[3] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "brick");
-        this.marsBlockIcons[4] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "top");
-        this.marsBlockIcons[5] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "copper");
-        this.marsBlockIcons[6] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "desh");
-        this.marsBlockIcons[7] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "tin");
-        this.marsBlockIcons[8] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "bottom");
-        this.marsBlockIcons[9] = par1IconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "iron");
+        this.kepler186BlockIcons = new IIcon[11];
+        this.marsBlockIcons[0] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "cobblestone");
+        this.marsBlockIcons[1] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "decoration_desh");
+        this.marsBlockIcons[2] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "middle");
+        this.marsBlockIcons[3] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "brick");
+        this.marsBlockIcons[4] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "top");
+        this.marsBlockIcons[5] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "copper");
+        this.marsBlockIcons[6] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "desh");
+        this.marsBlockIcons[7] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "tin");
+        this.marsBlockIcons[8] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "bottom");
+        this.marsBlockIcons[9] = par1IconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "iron");
         this.marsBlockIcons[10] = par1IconRegister.registerIcon(GalacticraftCore.TEXTURE_PREFIX + "blank");
     }*/
 
