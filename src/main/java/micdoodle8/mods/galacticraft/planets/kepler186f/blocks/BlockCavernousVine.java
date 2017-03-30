@@ -1,4 +1,4 @@
-package micdoodle8.mods.galacticraft.planets.mars.blocks;
+package micdoodle8.mods.galacticraft.planets.kepler186f.blocks;
 
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.blocks.ISortableBlock;
@@ -7,7 +7,7 @@ import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc;
 import micdoodle8.mods.galacticraft.core.util.EnumSortCategoryBlock;
 import micdoodle8.mods.galacticraft.core.util.GCCoreUtil;
 import micdoodle8.mods.galacticraft.planets.GalacticraftPlanets;
-import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
+import micdoodle8.mods.galacticraft.planets.kepler186f.Kepler186FModule;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -143,7 +143,7 @@ public class BlockCavernousVine extends Block implements IShearable, IShiftDescr
         this.vineIcons = new IIcon[3];
         for (int i = 0; i < 3; i++)
         {
-            this.vineIcons[i] = iconRegister.registerIcon(MarsModule.TEXTURE_PREFIX + "vine_" + i);
+            this.vineIcons[i] = iconRegister.registerIcon(Kepler186FModule.TEXTURE_PREFIX + "vine_" + i);
         }
     }*/
 
@@ -199,7 +199,7 @@ public class BlockCavernousVine extends Block implements IShearable, IShiftDescr
         int vineCount = 0;
         int y2 = pos.getY();
 
-        while (world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ())).getBlock() == MarsBlocks.vine)
+        while (world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ())).getBlock() == Kepler186FBlocks.vine)
         {
             vineCount++;
             y2++;
@@ -213,7 +213,7 @@ public class BlockCavernousVine extends Block implements IShearable, IShiftDescr
         int vineCount = 0;
         int y2 = pos.getY();
 
-        while (world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ())).getBlock() == MarsBlocks.vine)
+        while (world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ())).getBlock() == Kepler186FBlocks.vine)
         {
             vineCount += 4;
             y2--;
